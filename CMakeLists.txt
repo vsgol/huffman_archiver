@@ -9,7 +9,7 @@ add_executable(huffman src/main.cpp src/BitFileManipulator.cpp src/HuffmanTree.c
 project(test_huffman)
 add_executable(test_huffman src/BitFileManipulator.cpp src/HuffmanTree.cpp
         src/HuffmanArchiver.cpp src/ByteFileReader.cpp src/CLI.cpp
-        test/TestBinManipulator.cpp test/TestMain.cpp test/TestHaffmanTree.cpp test/TestCompressExtract.cpp test/TestCLI.cpp test/TestCLI.cpp)
+        test/doctest.h test/TestBinManipulator.cpp test/TestMain.cpp test/TestHaffmanTree.cpp test/TestCompressExtract.cpp test/TestCLI.cpp test/TestCLI.cpp)
 
 
 include_directories(include)

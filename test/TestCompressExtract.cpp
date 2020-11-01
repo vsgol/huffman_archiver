@@ -86,27 +86,6 @@ TEST_CASE("Compress and Extract: many identical letters") {
     remove("result.o");
 }
 
-TEST_CASE("Compress and Extract: big text") {
-    HuffmanCompress huffman_compress;
-    HuffmanExtract huffman_extract;
-
-    huffman_compress.compressFile("Горе_от_ума.txt", "result.o");
-    huffman_extract.extractFile("result.o", "Горе_от_ума_copy.txt");
-
-    std::ifstream ifs1("Горе_от_ума.txt", std::ios::binary);
-    std::ifstream ifs2("Горе_от_ума_copy.txt", std::ios::binary);
-    std::istream_iterator<char> is1(ifs1);
-    std::istream_iterator<char> is2(ifs2);
-
-    CHECK(std::equal(is1, std::istream_iterator<char>(), is2));
-
-    CHECK(huffman_compress.getSizeTabelle() == huffman_extract.getSizeTabelle());
-    CHECK(huffman_compress.getSizeOutputFile() == huffman_extract.getSizeInputFile());
-    CHECK(huffman_compress.getSizeInputFile() == huffman_extract.getSizeOutputFile());
-    CHECK(huffman_compress.getSizeInputFile() == 280650);
-    remove("Горе_от_ума_copy.txt");
-    remove("result.o");
-}
 
 TEST_CASE("Compress and Extract: CMakeLists") {
     HuffmanCompress huffman_compress;
@@ -125,7 +104,7 @@ TEST_CASE("Compress and Extract: CMakeLists") {
     CHECK(huffman_compress.getSizeTabelle() == huffman_extract.getSizeTabelle());
     CHECK(huffman_compress.getSizeOutputFile() == huffman_extract.getSizeInputFile());
     CHECK(huffman_compress.getSizeInputFile() == huffman_extract.getSizeOutputFile());
-    CHECK(huffman_compress.getSizeInputFile() == 688);
+    CHECK(huffman_compress.getSizeInputFile() == 696);
     remove("../CMakeLists_copy.txt");
     remove("result.o");
 }
